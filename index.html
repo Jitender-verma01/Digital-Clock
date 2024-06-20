@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+    <link rel="stylesheet" href="style.css"
+</head>
+<body>
+     <div class="container">
+        <div class="clock">
+            <div id="Date">Monday 11 September 2024</div>
+            <ul>
+                <li id="hours"> 05</li>
+                <li id="point"> :</li>
+                <li id="min"> 25</li>
+                <li id="point"> :</li>
+                <li id="sec"> 55</li>
+            </ul>
+        </div>
+     </div>
+     <script>
+        function clock(){
+            var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            var dayNames=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            var today = new Date();
+
+            document.getElementById('Date').innerHTML =(dayNames[today.getDay()] + " " + today.getDate() + ' '+ monthNames[today.getMonth()] + ' ' +today.getFullYear());
+
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            if(h>12){
+                h=h-12;
+            }
+            var day = h<11 ? 'AM' : 'PM';
+            h=h<10? '0'+h: h;
+            m=m<10? '0'+m: m;
+            s=s<10? '0'+s: s;
+            document.getElementById('hours').innerHTML = h;
+            document.getElementById('min').innerHTML = m;
+            document.getElementById('sec').innerHTML = s;
+        } var inter = setInterval(clock,400);
+     </script>
+</body>
+</html>
